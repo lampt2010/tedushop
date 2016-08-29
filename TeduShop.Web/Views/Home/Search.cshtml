@@ -1,0 +1,36 @@
+﻿@model TeduShop.Web.Infrastructure.Core.PaginationSet<TeduShop.Web.Models.ProductViewModel>
+@{
+    var keyword = (string)ViewBag.Keyword;
+    ViewBag.Title = "Kết quả tìm kiếm từ khóa" +keyword;
+    Layout = "~/Views/shared/Layout.cshtml";
+}
+
+@if (Model.Items.Count() > 0)
+{
+  
+
+
+
+    <div class="section group">
+
+        @foreach (var product in Model.Items)
+        {
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="/san-pham/@product.Alias"><img src="@product.Image" alt="@product.Name"></a>
+                <h2>@product.Name</h2>
+                <p>@product.Description</p>
+                <p><span class="strike">@product.Price</span><span class="price">@product.PromotionPrice</span></p>
+                <div class="button"><span><img src="/Assets/client/images/cart.jpg" alt=""><a href="/gio-hang/@product.ID" class="cart-button">Add to Cart</a></span> </div>
+                <div class="button"><span><a href="/san-pham/@product.Alias" class="details">Details</a></span></div>
+            </div>
+
+        }
+
+
+    </div>
+
+}
+else
+{<div class="text-center">Không có dữ liệu</div>
+}
+

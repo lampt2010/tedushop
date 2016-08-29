@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TeduShop.Web.Models.ProductCategoryViewModel>
+
+<div class="menu">
+    <ul id="dc_mega-menu-orange" class="dc_mm-orange">
+        <li><a href="index.html">Home</a></li>
+        <li>
+            <a href="products.html">Products</a>
+            <ul>
+                @foreach (var productcategory in Model.Where(x=>x.ParentID==null))
+                {
+                    var childCategories = Model.Where(x => x.ParentID == productcategory.ID);
+                    <li>
+                        <a href="/danh-muc-san-pham/@productcategory.Alias">@productcategory.Name</a>
+                     @if (childCategories.Count() > 0)
+                     {
+                         <ul>
+                             @foreach (var child in childCategories)
+                             {
+                                 string link ="/"+"danh-muc-san-pham"+"/"+ child.Alias;
+                                <li><a href="@link">@child.Name</a></li>
+                             }
+                         </ul>
+                        
+                     }
+                        
+                    </li>
+                }
+
+            
+            </ul>
+        </li>
+     
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Delivery</a></li>
+        <li><a href="faq.html">FAQS</a></li>
+        <li><a href="contact.html">Contact</a> </li>
+        <div class="clear"></div>
+    </ul>
+</div>
+

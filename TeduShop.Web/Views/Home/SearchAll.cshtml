@@ -1,0 +1,78 @@
+﻿@model TeduShop.Web.Infrastructure.Core.PaginationSet<TeduShop.Web.Models.SearchResultViewModel>    
+@{
+
+            var keyword = (string)ViewBag.Keyword;
+            ViewBag.Title = "Kết quả tìm kiếm từ khóa" + keyword;
+            ViewBag.Title = "SearchAll";
+            Layout = "~/Views/shared/Layout.cshtml";
+}
+
+
+@if (Model.Items.Count() > 0)
+{
+
+
+
+
+    <div class="section group">
+
+        @foreach (var item in Model.Items)
+        {
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="@item.Url"><img src="@item.Image" alt="@item.Title"></a>
+                <h2>@item.Title</h2>
+                <p>@item.Description</p>
+               
+             
+            </div>
+
+        }
+
+
+    </div>
+
+
+
+    if (Model.TotalPage > 1)
+    {
+        //Create numberic
+        var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+        var endPageIndex = Math.Min(Model.TotalPage, Model.Page + Model.MaxPage / 2);
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @if (Model.Page > 1)
+                {
+                    <li> <a href="?keyword=@keyword&&page=1" aria-label="First"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li><a href="?keyword=@keyword&&page=@(Model.Page-1)" aria-label="Previous"><i class="fa fa-angle-double-left"></i></a></li>
+                }
+                @for (int i = startPageIndex; i <= endPageIndex; i++)
+                {
+                    if (Model.Page == i)
+                    {
+                        <li><a href="?keyword=@keyword&&page=@i" class="active" title="Trang @i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="?keyword=@keyword&&page=@i" title="Trang @i">@i</a></li>
+                    }
+                }
+                @if (Model.Page < Model.TotalPage)
+                {
+                    <li><a href="?keyword=@keyword&&page=@(Model.Page+1)" aria-label="First"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li><a href="?keyword=@keyword&&page=@(Model.TotalPage)" aria-label="Previous"><i class="fa fa-angle-double-left"></i></a></li>
+                }
+
+
+            </ul>
+        </nav>
+    }
+
+}
+else
+{<div class="text-center">Không có dữ liệu</div>
+}
+
+
+
+ 
+

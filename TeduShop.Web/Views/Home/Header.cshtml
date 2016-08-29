@@ -1,0 +1,126 @@
+﻿<div class="header_top">
+    <div class="logo">
+        <a href="index.html"><img src="/Assets/client/images/logo.png" alt="" /></a>
+    </div>
+    <div class="header_top_right">
+        <div class="search_box">
+            <form method="get" action="/tim-kiem">
+                <input type="text" id="txtKeyword" name="keyword" placeholder="Search..."><input type="submit" value="SEARCH">
+            </form>
+        </div>
+        <div class="shopping_cart">
+            <div class="cart">
+                <a href="#" title="View my shopping cart" rel="nofollow">
+                    <strong class="opencart"> </strong>
+                    <span class="cart_title">Cart</span>
+                    <span class="no_product">(empty)</span>
+                </a>
+            </div>
+        </div>
+        <div class="languages" title="language">
+            <div id="language" class="wrapper-dropdown" tabindex="1">
+                EN
+                <strong class="opencart"> </strong>
+                <ul class="dropdown languges">
+                    <li>
+                        <a href="#" title="Français">
+                            <span><img src="/Assets/client/images/gb.png" alt="en" width="26" height="26"></span><span class="lang">English</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Français">
+                            <span><img src="/Assets/client/images/au.png" alt="fr" width="26" height="26"></span><span class="lang">Français</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Español">
+                            <span><img src="/Assets/client/images/bm.png" alt="es" width="26" height="26"></span><span class="lang">Español</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="Deutsch">
+                            <span><img src="/Assets/client/images/ck.png" alt="de" width="26" height="26"></span><span class="lang">Deutsch</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="$" title="Russian">
+                            <span><img src="/Assets/client/images/cu.png" alt="ru" width="26" height="26"></span><span class="lang">Russian</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+			function DropDown(el) {
+				this.dd = el;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						event.stopPropagation();
+					});
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#language') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown').removeClass('active');
+				});
+
+			});
+
+            </script>
+        </div>
+        <div class="currency" title="currency">
+            <div id="currency" class="wrapper-dropdown" tabindex="1">
+                $
+                <strong class="opencart"> </strong>
+                <ul class="dropdown">
+                    <li><a href="#"><span>$</span>Dollar</a></li>
+                    <li><a href="#"><span>€</span>Euro</a></li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+			function DropDown(el) {
+				this.dd = el;
+				this.initEvents();
+			}
+			DropDown.prototype = {
+				initEvents : function() {
+					var obj = this;
+
+					obj.dd.on('click', function(event){
+						$(this).toggleClass('active');
+						event.stopPropagation();
+					});
+				}
+			}
+
+			$(function() {
+
+				var dd = new DropDown( $('#currency') );
+
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown').removeClass('active');
+				});
+
+			});
+
+            </script>
+        </div>
+        <div class="login">
+            <span><a href="login.html"><img src="/Assets/client/images/login.png" alt="" title="login" /></a></span>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+

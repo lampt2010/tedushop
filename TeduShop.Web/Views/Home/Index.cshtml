@@ -1,0 +1,197 @@
+﻿@model TeduShop.Web.Models.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/shared/Layout.cshtml";
+}
+
+<div class="header_bottom">
+
+
+
+    <div class="header_bottom_left">
+        <div class="section group">
+            @foreach (var specialProduct in Model.SpecialProducts.Take(2))
+            {
+
+            <div class="listview_1_of_2 images_1_of_2">
+                <div class="listimg listimg_2_of_1">
+                    <a href="/san-pham/@specialProduct.Alias"> <img src="@specialProduct.Image" alt="@specialProduct.Name" /></a>
+                </div>
+                <div class="text list_2_of_1">
+                    <h2>@specialProduct.Name</h2>
+                    <p>@specialProduct.Description</p>
+                    <div class="button"><span><a href="preview.html">Add to cart</a></span></div>
+                </div>
+            </div>
+
+            }
+        </div>
+
+        <div class="section group">
+            @foreach (var specialProduct in Model.SpecialProducts.Skip(2).Take(2))
+           {
+            <div class="listview_1_of_2 images_1_of_2">
+                <div class="listimg listimg_2_of_1">
+                    <a href="/san-pham/@specialProduct.Alias"><img src="@specialProduct.Image" alt="@specialProduct.Name" /></a>
+                </div>
+                <div class="text list_2_of_1">
+                    <h2>@specialProduct.Name</h2>
+                    <p>@specialProduct.Description</p>
+                    <div class="button"><span><a href="preview-6.html">Add to cart</a></span></div>
+                </div>
+            </div>
+           }
+
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="header_bottom_right_images">
+        <!-- FlexSlider -->
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    @foreach (var slide in Model.Slides)
+                    {
+                    <li><img src="@slide.Image" alt="@slide.Name" /></li>
+                    }
+
+                </ul>
+            </div>
+        </section>
+        <!-- FlexSlider -->
+    </div>
+
+
+    <div class="clear"></div>
+</div>
+
+
+
+
+
+
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="heading">
+                <h3>Sản phẩm đặc biệt</h3>
+            </div>
+            <div class="sort">
+                <p>
+                    Sort by:
+                    <select>
+                        <option>Lowest Price</option>
+                        <option>Highest Price</option>
+                        <option>Lowest Price</option>
+                        <option>Lowest Price</option>
+                        <option>Lowest Price</option>
+                        <option>In Stock</option>
+                    </select>
+                </p>
+            </div>
+            <div class="show">
+                <p>
+                    Show:
+                    <select>
+                        <option>4</option>
+                        <option>8</option>
+                        <option>12</option>
+                        <option>16</option>
+                        <option>20</option>
+                        <option>In Stock</option>
+                    </select>
+                </p>
+            </div>
+            <div class="page-no">
+                <p>
+                    Result Pages:<ul>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>[<a href="#"> Next>>></a>]</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="section group">
+            @foreach (var hotproduct in Model.HotProducts)
+            {
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="/san-pham/@hotproduct.Alias"><img src="@hotproduct.Image" alt="@hotproduct.Name" /></a>
+                    <h2>@hotproduct.Name</h2>
+                    <p>@hotproduct.Description</p>
+                    <p><span class="strike">@hotproduct.Price</span><span class="price">@hotproduct.PromotionPrice</span></p>
+                    <div class="button"><span><img src="/Assets/client/images/cart.jpg" alt="" /><a href="/gio-hang.html" class="cart-button">Add to Cart</a></span> </div>
+                    <div class="button"><span><a href="/san-pham/@hotproduct.Alias" class="details">Details</a></span></div>
+                </div>
+            }
+
+
+        </div>
+
+        <div class="content_bottom">
+            <div class="heading">
+                <h3>Sản phẩm hot</h3>
+            </div>
+            <div class="sort">
+                <p>
+                    Sort by:
+                    <select>
+                        <option>Lowest Price</option>
+                        <option>Highest Price</option>
+                        <option>Lowest Price</option>
+                        <option>Lowest Price</option>
+                        <option>Lowest Price</option>
+                        <option>In Stock</option>
+                    </select>
+                </p>
+            </div>
+            <div class="show">
+                <p>
+                    Show:
+                    <select>
+                        <option>4</option>
+                        <option>8</option>
+                        <option>12</option>
+                        <option>16</option>
+                        <option>20</option>
+                        <option>In Stock</option>
+                    </select>
+                </p>
+            </div>
+            <div class="page-no">
+                <p>
+                    Result Pages:<ul>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>[<a href="#"> Next>>></a>]</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="section group">
+            @foreach (var newproduct in Model.NewProducts)
+            {
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="/san-pham/@newproduct.Alias"><img src="@newproduct.Image" alt="@newproduct.Name" /></a>
+                    <div class="discount">
+                        <span class="percentage">40%</span>
+                    </div>
+                    <h2>@newproduct.Name</h2>
+                    <p><span class="strike">@newproduct.Price</span><span class="price">@newproduct.PromotionPrice</span></p>
+                    <div class="button"><span><img src="/Assets/client/images/cart.jpg" alt="" /><a href="/gio-hang" class="cart-button">Add to Cart</a></span> </div>
+                    <div class="button"><span><a href="/san-pham/@newproduct.Alias" class="details">Details</a></span></div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+

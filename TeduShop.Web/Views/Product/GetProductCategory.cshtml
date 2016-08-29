@@ -1,0 +1,102 @@
+﻿@model TeduShop.Web.Infrastructure.Core.PaginationSet<TeduShop.Web.Models.ProductViewModel>
+@{
+    ViewBag.Title = "GetProductCategory";
+    Layout = "~/Views/shared/Layout.cshtml";
+    var category = (TeduShop.Web.Models.ProductCategoryViewModel)ViewBag.category;
+
+}
+@if (Model.Items.Count() > 0)
+{
+<div class="content_top">
+    <div class="heading">
+        <h3><a href="/danh-muc-san-pham/@category.Alias">@category.Name </a></h3>
+    </div>
+    <div class="sort">
+        <p>
+            Sort by:
+            <ul class="w_nav">
+                <li><a href="?page=@Model.Page&sort=new">New</a></li>
+                <li><a href="?page=@Model.Page&sort=popular">Popular</a></li>
+                <li><a href="?page=@Model.Page&sort=discount">Discount</a></li>
+                <li><a href="?page=@Model.Page&sort=price">Price</a></li>
+               
+              
+            </ul>
+        </p>
+    </div>
+    <div class="show">
+        <p>
+            Show:
+            <select>
+                <option>4</option>
+                <option>8</option>
+                <option>12</option>
+                <option>16</option>
+                <option>20</option>
+                <option>In Stock</option>
+            </select>
+        </p>
+    </div>
+    <div class="page-no">
+     @if (Model.TotalPage > 1)
+     {
+         //Create numberic
+         var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+         var endPageIndex = Math.Min(Model.TotalPage, Model.Page + Model.MaxPage / 2);
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @if (Model.Page > 1)
+                {
+                    <li> <a href="?page=1" aria-label="First"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li><a href="?page=@(Model.Page-1)" aria-label="Previous"><i class="fa fa-angle-double-left"></i></a></li>
+                }
+                @for(int i = startPageIndex; i <= endPageIndex; i++)
+                {
+                    if (Model.Page == i)
+                    {
+                        <li><a href="?page=@i" class="active" title="Trang @i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="?page=@i" title="Trang @i">@i</a></li>
+                    }
+                }
+                @if (Model.Page < Model.TotalPage)
+                {
+                    <li><a href="?page=@(Model.Page+1)" aria-label="First"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li><a href="?page=@(Model.TotalPage)" aria-label="Previous"><i class="fa fa-angle-double-left"></i></a></li>
+                }
+
+              
+            </ul>
+        </nav>
+     }
+
+
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+
+<div class="section group">
+
+    @foreach (var product in Model.Items)
+    {
+        <div class="grid_1_of_4 images_1_of_4">
+            <a href="/san-pham/@product.Alias"><img src="@product.Image" alt="@product.Name"></a>
+            <h2>@product.Name</h2>
+            <p>@product.Description</p>
+            <p><span class="strike">@product.Price</span><span class="price">@product.PromotionPrice</span></p>
+            <div class="button"><span><img src="/Assets/client/images/cart.jpg" alt=""><a href="/gio-hang/@product.ID" class="cart-button">Add to Cart</a></span> </div>
+            <div class="button"><span><a href="/san-pham/@product.Alias" class="details">Details</a></span></div>
+        </div>
+
+    }
+
+   
+</div>
+
+}else
+{<div class="text-center">Không có dữ liệu</div>
+}
